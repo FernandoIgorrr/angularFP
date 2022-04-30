@@ -1,0 +1,125 @@
+<section class="property-binding" style="display:none">
+    <a target="_blank" href="{{url}}" rel="noreferrer noopener">YouTube</a><br>
+    <select #classe (change)="0"> 
+        <option value="alert-success">Succeso</option>
+        <option value="alert-info">Info</option>
+        <option value="alert-warning">Alerta</option>
+        <option value="alert-danger">Erro</option>
+    </select>
+    <br><br>
+    <div class="alert {{classe.value}}" role="alert">
+        Colorido conforme o combobox
+    </div>
+    <!-- <div class="alert" role="alert" [class.alert-success]="classe.value == 'alert-success'">
+        Sucesso
+    </div>
+    <div class="alert" role="alert" [class.alert-info]="classe.value == 'alert-info'">
+        Info
+    </div>
+    <div class="alert" role="alert" [class.alert-warning]="classe.value == 'alert-warning'">
+        Alerta
+    </div>
+    <div class="alert" role="alert" [class.alert-danger]="classe.value == 'alert-danger'">
+        Erro
+    </div> -->
+
+    <div class="alert alert-danger" role="alert" [style.display]="classe.value =='alert-danger' ? 'block' : 'none'">
+        Erro
+    </div>
+<article>
+        <h3>Título do artigo</h3>
+        <p>
+            Lorem ipsum dolor sit amet. 
+            Et voluptates earum sed omnis 
+            consequatur ut earum fugit! Rem 
+            aspernatur incidunt et harum mollitia 
+            est quaerat autem et ipsum doloremque cum 
+            repellat omnis. A quia molestias quo 
+            necessitatibus fugit est pariatur aliquid qui 
+            perferendis nihil quo tenetur reprehenderit. Eos eius 
+            molestiae eum quod magnam ea ipsam consequatur 
+            ut animi aperiam. 
+        </p>
+        <p>
+            Id nisi cumque non soluta alias 
+            ad minus labore et doloremque natus 
+            et autem autem  nemo quibusdam. Et 
+            doloremque dolorem sit libero eaque ex 
+            saepe culpa ut exercitationem rerum? Hic 
+            nulla assumenda sit dolorem alias ut eaque 
+            quod ut sint quam non alias totam et animi maiores. 
+            Qui tempora delectus rem consequatur quod sed beatae 
+            excepturi. 
+        </p>
+        <p>
+            Aut voluptatibus molestiae et dicta voluptates sed 
+            ratione commodi et adipisci iure et suscipit beatae 
+            sed placeat consequatur qui officiis atque. A illo 
+            soluta in facere voluptas a tempora perspiciatis qui 
+            nisi earum ab minus necessitatibus ad aliquid saepe ut 
+            beatae asperiores. Ut blanditiis perspiciatis vel labore 
+            expedita qui placeat facere aut pariatur omnis qui ipsa voluptate. 
+            Nam alias quia aut molestiae magnam cum illum corrupti qui Quis temporibus. 
+        </p>
+    </article>
+    <img src="{{imgUrl}}">
+    <img [src]="imgUrl2">
+</section>
+
+<section style="display:none" class="event-binding">
+    <article>
+        <h3>Event Binding</h3>
+        <div>
+            <button (click)="botaoClicado()" class="btn btn-primary">Me click</button>
+            <br>
+            <input  (keyup)="onKeyUp($event)" 
+                    (keyup.enter)="salvarValor(fieldInput.value)" 
+                    (blur)="salvarValor(fieldInput.value)"
+                    type="text" #fieldInput>
+            <br>
+            <b>Valor Atual:</b>
+            <p>{{valorAtual}}</p>
+            <b>Valor Salvo:</b>
+            <p>{{valorSalvo}}</p>
+            <br>
+            <span 
+                (mouseover)="onMouseOverOut()"
+                (mouseout)="onMouseOverOut()"
+                [class.highlight]="isMouseOverOut"
+                >
+                Passe o mouse sobre mim!
+            </span>
+            <p>
+                Aut voluptatibus molestiae et dicta voluptates sed 
+                ratione commodi et adipisci iure et suscipit beatae 
+                sed placeat consequatur qui officiis atque. A illo 
+                soluta in facere voluptas a tempora perspiciatis qui 
+                nisi earum ab minus necessitatibus ad aliquid saepe ut 
+                beatae asperiores. Ut blanditiis perspiciatis vel labore 
+                expedita qui placeat facere aut pariatur omnis qui ipsa voluptate. 
+                Nam alias quia aut molestiae magnam cum illum corrupti qui Quis temporibus. 
+            </p>
+        </div>
+    </article>
+</section>
+
+<section class="two-way-data-binding">
+    <article>
+        <h3>Two-way data bindings</h3>
+        <div>
+            <input type="text" [value]="nome" 
+            (input)="nome = inputField.value" #inputField/>
+            <p>
+                {{nome}}
+            </p>
+            <br><br>
+
+            <input type="text" 
+            [ngModel]="nome2" 
+            (ngModelChange)="nome2 = $event"/>
+            <p>
+                {{nome2}}
+            </p>
+        </div>
+    </article>
+</section>
